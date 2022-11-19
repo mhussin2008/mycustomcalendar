@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:mycustomcalendar/CustomeCalendar.dart';
 import 'package:mycustomcalendar/main.dart';
+import 'package:quiver/core.dart';
+
+import 'constants.dart';
 
 void main() {
   runApp(const MyApp());
@@ -49,7 +52,11 @@ class _MyHomePageState extends State<MyHomePage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: (){},
+        onPressed: (){
+          DateTime d=DateTime(2022,11,1);
+          print(d.weekday);
+          print(Constants.DayName[d.weekday-1]);
+        },
         tooltip: 'Increment',
         child: const Icon(Icons.add),
       ), // This trailing comma makes auto-formatting nicer for build methods.

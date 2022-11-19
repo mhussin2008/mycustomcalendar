@@ -3,11 +3,21 @@ import 'package:flutter/material.dart';
 import 'mycust_num.dart';
 
 class mycust_Wnum extends StatelessWidget {
-  final int num;
-  final state;
+  String num='0';
+  String state='H';
 
   //MyCustNum(this.num,this.state);
-  const mycust_Wnum(this.num,this.state,{Key? key}) : super(key: key);
+   mycust_Wnum(this.num,this.state,{Key? key}) : super(key: key);
+
+  String get getnum {
+    return num;
+  }
+
+  // Creating the setter method
+  // to set the input in Field/Property
+  set setnum (String num) {
+    this.num = num;
+  }
 
   @override
   Widget build(BuildContext context) {
