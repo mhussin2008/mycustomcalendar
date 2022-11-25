@@ -11,9 +11,12 @@ class SingleDay extends StatelessWidget {
     final  pos=Constants.states.indexWhere((element) => element==state);
     return Stack(
       alignment: Alignment.center,
-      fit: StackFit.passthrough ,
+
       children: [
         IconButton(
+
+           alignment: Alignment.centerLeft
+          ,
         color: Constants.sColors[pos],
           onPressed: () {
           print(num);
@@ -22,7 +25,10 @@ class SingleDay extends StatelessWidget {
               size:40,
               Icons.circle_outlined),
         ),
-        Text(num)
+        Text(num
+                ,
+         style: TextStyle(color:  Constants.sColors[pos]),
+            )
       ],
 
     );
