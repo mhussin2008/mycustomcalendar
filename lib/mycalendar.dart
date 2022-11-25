@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'constants.dart';
 import 'single_day.dart';
@@ -13,8 +14,14 @@ class MyCalendar extends StatelessWidget {
     // var d = DateUtil();
     var n=daysInMonth(2022, 11);
     var t=DateTime(2022,11,1).weekday;
-
     Constants.widgetList[0]=Constants.dayApprev.map((e) => SingleDay(e, 'H')).toList() ;
+    for (int j=1;j<=5;j++) {
+      for (int i = 1; i <= 7; i++) {
+        int d=i+(j-1)*7;
+        if(d>31){break;}
+        Constants.widgetList[j][i - 1] = SingleDay(d.toString(), 'X');
+      }
+    }
 
     return Column(
         mainAxisAlignment: MainAxisAlignment.center,
