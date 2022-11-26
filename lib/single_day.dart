@@ -13,17 +13,22 @@ class SingleDay extends StatelessWidget {
       alignment: Alignment.center,
 
       children: [
-        IconButton(
-
-           alignment: Alignment.centerLeft
-          ,
-        color: Constants.sColors[pos],
-          onPressed: () {
-          print(num);
-          },
-          icon: const Icon(
-              size:40,
-              Icons.circle_outlined),
+        SizedBox(
+          width: 40,
+          height: 40,
+          child: IconButton(
+            padding: EdgeInsets.all(0.0)
+            ,
+             alignment: Alignment.center
+            ,
+          color: Constants.sColors[pos],
+            onPressed: () {
+            print(num);
+            },
+            icon: const Icon(
+                size:40,
+                Icons.circle_outlined),
+          ),
         ),
         Text(num
                 ,
