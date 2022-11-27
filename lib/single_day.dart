@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'constants.dart';
 
 class SingleDay extends StatelessWidget {
-  const SingleDay(this.num,this.state,{Key? key}) : super(key: key);
+  const SingleDay(this.num,this.month,this.state,{Key? key}) : super(key: key);
   final String num;
+  final String month;
   final String state;
 
   @override
@@ -17,13 +18,11 @@ class SingleDay extends StatelessWidget {
           width: 40,
           height: 40,
           child: IconButton(
-            padding: EdgeInsets.all(0.0)
-            ,
-             alignment: Alignment.center
-            ,
-          color: Constants.sColors[pos],
+            padding: EdgeInsets.all(0.0),
+            alignment: Alignment.center,
+            color: Constants.sColors[pos],
             onPressed: () {
-            print(num);
+            print(num+'  '+month);
             },
             icon: const Icon(
                 size:40,
