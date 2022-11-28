@@ -10,5 +10,5 @@ class Constants
   static const sColors=[Colors.red,Colors.green,Colors.blue,Colors.amber,Colors.blueGrey,Colors.white];
   //static List<List<SingleDay>> widgetList= List.generate(6, (i) => List.filled(7, SingleDay('0',11.toString(), 'Z'),growable: false),growable: false);
   static List<SingleDay> widgetList=List.filled(1, SingleDay(Constants.dayApprev[0], 0.toString(), 'H'),growable: true);
-
+  static List<SingleDay> header=List.filled(1, SingleDay(Constants.dayApprev[0], 0.toString(), 'H'),growable: true);
 }

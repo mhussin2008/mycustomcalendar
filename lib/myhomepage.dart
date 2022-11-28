@@ -1,3 +1,5 @@
+//import 'dart:html';
+
 import 'package:flutter/material.dart';
 import 'package:mycustomcalendar/single_day.dart';
 import 'package:quiver/time.dart';
@@ -20,9 +22,10 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   void initState() {
     for(int h=1;h<Constants.dayApprev.length;h++){
-      Constants.widgetList.add(
-          SingleDay(Constants.dayApprev[h], 0.toString(), 'H'));
+      Constants.header.add(
+         SingleDay(Constants.dayApprev[h], 0.toString(), 'H'));
     }
+    //Constants.header.removeAt(0);
 
 
 
@@ -31,6 +34,7 @@ class _MyHomePageState extends State<MyHomePage> {
         {Constants.widgetList.add(
             SingleDay(i.toString(), m.toString(), m.isEven? 'X':'E'));}
     }
+    Constants.widgetList.removeAt(0);
 
 
     // TODO: implement initState
@@ -44,8 +48,7 @@ class _MyHomePageState extends State<MyHomePage> {
       appBar: AppBar(
         title: Text(widget.title),
       ),
-      body: SingleChildScrollView(
-          child: MyCalendar()),
+      body: MyCalendar(),
     );
   }
 }
