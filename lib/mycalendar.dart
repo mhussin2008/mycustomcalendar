@@ -26,7 +26,7 @@ class MyCalendar extends StatelessWidget {
     int hhh=(Constants.widgetList.length/7).toInt();
     print('total=$hhh');
     print('year days=${Constants.widgetList.length}');
-      for(j=0;j<(Constants.widgetList.length/7).toInt();j++) {
+      for(j=0;j<hhh;j++) {
         for (i = 1; i <= 7; i++) {
 
           row[i-1]= Constants.widgetList[i+7*j-1];

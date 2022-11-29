@@ -34,8 +34,13 @@ class _MyHomePageState extends State<MyHomePage> {
         {Constants.widgetList.add(
             SingleDay(i.toString(), m.toString(), m.isEven? 'X':'E'));}
     }
-    Constants.widgetList.add(
-        SingleDay(31.toString(), 12.toString(), 12.isEven? 'X':'E'));
+    // Constants.widgetList.add(
+    //     SingleDay(31.toString(), 12.toString(), 12.isEven? 'X':'E'));
+    for(int i=1;i<=7;i++) {
+      Constants.widgetList.add(SingleDay('0', '0', 'Z'));
+    }
+    print('widget list length='+Constants.widgetList.length.toString());
+
     Constants.widgetList.removeAt(0);
 
 
