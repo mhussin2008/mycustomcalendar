@@ -29,11 +29,13 @@ class _MyHomePageState extends State<MyHomePage> {
 
 
 
-    for(int m=1;m<12;m++) {
+    for(int m=1;m<=12;m++) {
       for (int i = 1; i <= daysInMonth(2022, m); i++)
         {Constants.widgetList.add(
             SingleDay(i.toString(), m.toString(), m.isEven? 'X':'E'));}
     }
+    Constants.widgetList.add(
+        SingleDay(31.toString(), 12.toString(), 12.isEven? 'X':'E'));
     Constants.widgetList.removeAt(0);
 
 
@@ -45,10 +47,8 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Colors.white,
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: MyCalendar(),
+      
+      body: SafeArea(child: MyCalendar()),
     );
   }
 }
