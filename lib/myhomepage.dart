@@ -32,7 +32,7 @@ class _MyHomePageState extends State<MyHomePage> {
     for(int m=1;m<=12;m++) {
       for (int i = 1; i <= daysInMonth(2022, m); i++)
         {Constants.widgetList.add(
-            SingleDay(i.toString(), m.toString(), m.isEven? 'X':'E'));}
+            SingleDay(i.toString(), m.toString(), 'E'));}
     }
     // Constants.widgetList.add(
     //     SingleDay(31.toString(), 12.toString(), 12.isEven? 'X':'E'));

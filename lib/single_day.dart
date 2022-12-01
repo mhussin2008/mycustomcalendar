@@ -41,6 +41,7 @@ class _SingleDayState extends State<SingleDay> {
               //int getindex=Constants.widgetList.indexWhere((element) => (element.widget.num==widget.num && element.widget.month==widget.month));
               setState(() {
                 widget.cstate='X';
+
               });
 
               print('changed to X');

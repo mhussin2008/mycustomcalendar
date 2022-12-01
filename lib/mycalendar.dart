@@ -6,11 +6,14 @@ import 'package:quiver/time.dart';
 
 
 
-class MyCalendar extends StatelessWidget {
+class MyCalendar extends StatefulWidget {
   const MyCalendar({Key? key}) : super(key: key);
 
+  @override
+  State<MyCalendar> createState() => _MyCalendarState();
+}
 
-
+class _MyCalendarState extends State<MyCalendar> {
   @override
   Widget build(BuildContext context) {
     // var d = DateUtil();
@@ -20,12 +23,24 @@ class MyCalendar extends StatelessWidget {
 
     List<SingleDay> row=List<SingleDay>.filled(7, SingleDay('1','1','E'),growable: false);
     List<Row> RowList=List<Row>.filled(60, Row(children: row,),growable: false);
+    //List<int> totalX=[0,0,0,0,0,0,0,0,0,0,0,0];
+
     //
     //print(Constants.widgetList.length);
     //print((Constants.widgetList.length/7-1).toInt());
     int hhh=(Constants.widgetList.length/7).toInt();
     print('total=$hhh');
     print('year days=${Constants.widgetList.length}');
+
+    int totalX=0;
+    for(int i=0;i<Constants.widgetList.length;i++){
+      if (Constants.widgetList[i].cstate=='X'){totalX++;}
+    }
+    setState(() {
+      Constants.totalX=totalX;
+    });
+
+    
       for(j=0;j<hhh;j++) {
         for (i = 1; i <= 7; i++) {
 
@@ -45,11 +60,12 @@ class MyCalendar extends StatelessWidget {
 
         var v=Row(
            mainAxisAlignment: MainAxisAlignment.center,
-           children: [
+           children: [Column (children: [Text('$totalX'),
+
              RotatedBox(
                quarterTurns: 1,
                child: Container(
-                 width: 40*(Constants.monthLength[i+1]-Constants.monthLength[i]).toDouble(),
+                 width: 30*(Constants.monthLength[i+1]-Constants.monthLength[i]).toDouble(),
                  color: i.isOdd?Colors.amber:Colors.lightBlueAccent,
                  child: Text(Constants.monthNames[i],
                    textAlign: TextAlign.center,
@@ -60,7 +76,7 @@ class MyCalendar extends StatelessWidget {
 
                  ),
                ),
-             ),
+             )]),
 
              Column(
                  mainAxisAlignment: MainAxisAlignment.center,
@@ -70,9 +86,11 @@ class MyCalendar extends StatelessWidget {
 
              ),
            ],
-         );
+
+    );
         card.add(v);
        }
+      card.removeAt(0);
       // print(RowList.length);
       // SingleDay ff=RowList[5].children[0] as SingleDay;
       // print(ff.num);
