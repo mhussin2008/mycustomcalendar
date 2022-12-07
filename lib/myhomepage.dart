@@ -29,7 +29,7 @@ class _MyHomePageState extends State<MyHomePage> {
   void initState() {
     for(int h=1;h<Constants.dayApprev.length;h++){
       Constants.header.add(
-         SingleDay(Constants.dayApprev[h], 0.toString(), 'H',Update: Update,));
+         SingleDay(Constants.dayApprev[h], 0.toString(), 'H'));
     }
     //Constants.header.removeAt(0);
 

@@ -3,6 +3,7 @@ import 'package:quiver/iterables.dart';
 import 'constants.dart';
 import 'single_day.dart';
 import 'package:quiver/time.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 
 
@@ -28,7 +29,7 @@ class _MyCalendarState extends State<MyCalendar> {
         Constants.totalX=totalX;
       });}
 
-    List<SingleDay> row=List<SingleDay>.filled(7, SingleDay('1','1','E',Update: Update,),growable: false);
+    List<SingleDay> row=List<SingleDay>.filled(7, SingleDay('1','1','E'),growable: false);
     List<Row> RowList=List<Row>.filled(60, Row(children: row,),growable: false);
     //List<int> totalX=[0,0,0,0,0,0,0,0,0,0,0,0];
 
@@ -78,6 +79,7 @@ class _MyCalendarState extends State<MyCalendar> {
                  color: i.isOdd?Colors.amber:Colors.lightBlueAccent,
                  child: TextButton(
                    onPressed: (){
+
                      setState(() {
 
                      });
