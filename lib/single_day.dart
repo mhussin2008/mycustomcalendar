@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'constants.dart';
 
 class SingleDay extends StatefulWidget {
-  SingleDay(this.num,this.month,this.cstate,{Key? key}) : super(key: key);
+  SingleDay(this.num,this.month,this.cstate,{Key? key,Function? this.Update}) : super(key: key);
   final String num;
   final String month;
   String cstate;
+  Function? Update;
 
   @override
   State<SingleDay> createState() => _SingleDayState();
@@ -34,6 +35,7 @@ class _SingleDayState extends State<SingleDay> {
               setState(() {
                 widget.cstate='E';
               });
+              widget.Update!();
 
               print('changedto E');
             } else if(widget.cstate=='E')
@@ -43,6 +45,7 @@ class _SingleDayState extends State<SingleDay> {
                 widget.cstate='X';
 
               });
+              widget.Update!();
 
               print('changed to X');
             }

@@ -19,11 +19,17 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
 
+
+  void  Update (){
+   setState(() {
+    build(context);
+   });
+  }
   @override
   void initState() {
     for(int h=1;h<Constants.dayApprev.length;h++){
       Constants.header.add(
-         SingleDay(Constants.dayApprev[h], 0.toString(), 'H'));
+         SingleDay(Constants.dayApprev[h], 0.toString(), 'H',Update: Update,));
     }
     //Constants.header.removeAt(0);
 

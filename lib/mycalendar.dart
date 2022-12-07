@@ -20,8 +20,15 @@ class _MyCalendarState extends State<MyCalendar> {
     int i,j;
     var n=daysInMonth(2022, 11);
     var wd=DateTime(2022,11,1).weekday;
+    List<int> totalX=[0,0,0,0,0,0,0,0,0,0,0,0];
+    var sum=0;
+    void Update (){
+      sum=totalX.reduce((a, b) => a + b);
+      setState(() {
+        Constants.totalX=totalX;
+      });}
 
-    List<SingleDay> row=List<SingleDay>.filled(7, SingleDay('1','1','E'),growable: false);
+    List<SingleDay> row=List<SingleDay>.filled(7, SingleDay('1','1','E',Update: Update,),growable: false);
     List<Row> RowList=List<Row>.filled(60, Row(children: row,),growable: false);
     //List<int> totalX=[0,0,0,0,0,0,0,0,0,0,0,0];
 
@@ -32,16 +39,14 @@ class _MyCalendarState extends State<MyCalendar> {
     print('total=$hhh');
     print('year days=${Constants.widgetList.length}');
 
-    List<int> totalX=[0,0,0,0,0,0,0,0,0,0,0,0];
+
     int k=-1;
     for(int i=0;i<Constants.widgetList.length;i++){
       if( Constants.widgetList[i].num=='1') {k++;}
       if (Constants.widgetList[i].cstate=='X'){totalX[k]++;}
     }
-    var sum=totalX.reduce((a, b) => a + b);
-    setState(() {
-      Constants.totalX=totalX;
-    });
+
+
 
     
       for(j=0;j<hhh;j++) {
@@ -56,7 +61,7 @@ class _MyCalendarState extends State<MyCalendar> {
         //print(RowList[j].children.first.num);
         //row.removeAt(1);row.removeAt(2);row.removeAt(3);row.removeAt(4);row.removeAt(5);row.removeAt(6);
       }
-
+        Update();
       //var rowlists=partition(RowList, 4);
       List<Row> card=[Row(children: [Text('')],)];
       for(i=0;i<=11;i++){
