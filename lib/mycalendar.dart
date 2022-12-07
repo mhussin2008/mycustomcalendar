@@ -32,10 +32,13 @@ class _MyCalendarState extends State<MyCalendar> {
     print('total=$hhh');
     print('year days=${Constants.widgetList.length}');
 
-    int totalX=0;
+    List<int> totalX=[0,0,0,0,0,0,0,0,0,0,0,0];
+    int k=-1;
     for(int i=0;i<Constants.widgetList.length;i++){
-      if (Constants.widgetList[i].cstate=='X'){totalX++;}
+      if( Constants.widgetList[i].num=='1') {k++;}
+      if (Constants.widgetList[i].cstate=='X'){totalX[k]++;}
     }
+    var sum=totalX.reduce((a, b) => a + b);
     setState(() {
       Constants.totalX=totalX;
     });
@@ -60,20 +63,29 @@ class _MyCalendarState extends State<MyCalendar> {
 
         var v=Row(
            mainAxisAlignment: MainAxisAlignment.center,
-           children: [Column (children: [Text('$totalX'),
+           children: [Column (children: [Text('X=${totalX[i]}'),
 
              RotatedBox(
                quarterTurns: 1,
                child: Container(
+                 padding:EdgeInsets.all(0.0) ,
                  width: 30*(Constants.monthLength[i+1]-Constants.monthLength[i]).toDouble(),
                  color: i.isOdd?Colors.amber:Colors.lightBlueAccent,
-                 child: Text(Constants.monthNames[i],
-                   textAlign: TextAlign.center,
-                   style: TextStyle(
-                       fontSize: 30,
-                    // backgroundColor: Colors.lightBlueAccent
-                   ),
+                 child: TextButton(
+                   onPressed: (){
+                     setState(() {
 
+                     });
+                   },
+
+                   child: Text(Constants.monthNames[i],
+                     textAlign: TextAlign.center,
+                     style: TextStyle(
+                         fontSize: 20,
+                      // backgroundColor: Colors.lightBlueAccent
+                     ),
+
+                   ),
                  ),
                ),
              )]),
@@ -102,7 +114,10 @@ class _MyCalendarState extends State<MyCalendar> {
 
       children:( [
          Expanded(
-             flex:1,child: Row(children: <Widget> [SizedBox(width: 83,)]+ Constants.header)
+             flex:1,child: Row(children: <Widget> [
+             //  SizedBox(width: 83,)
+         Text('Total X='+sum.toString()), SizedBox(width: 20,)
+         ]+ Constants.header)
 
          ),
           Expanded (flex:12,child: SingleChildScrollView(
