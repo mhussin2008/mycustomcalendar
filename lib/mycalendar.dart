@@ -15,6 +15,15 @@ class MyCalendar extends StatefulWidget {
 }
 
 class _MyCalendarState extends State<MyCalendar> {
+  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
+
+
+  @override  initState()  {
+    // TODO: implement initState
+
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     // var d = DateUtil();
@@ -74,12 +83,16 @@ class _MyCalendarState extends State<MyCalendar> {
              RotatedBox(
                quarterTurns: 1,
                child: Container(
-                 padding:EdgeInsets.all(0.0) ,
+                 padding:const EdgeInsets.all(0.0) ,
                  width: 30*(Constants.monthLength[i+1]-Constants.monthLength[i]).toDouble(),
                  color: i.isOdd?Colors.amber:Colors.lightBlueAccent,
                  child: TextButton(
-                   onPressed: (){
-
+                   onPressed: () async {
+                      var getlist=Constants().scheduleFromMem();
+                      final SharedPreferences prefs = await _prefs;
+                      prefs.setStringList('data', getlist);
+                      print('saved to sharedprefs');
+                      print(getlist);
                      setState(() {
 
                      });
@@ -87,7 +100,7 @@ class _MyCalendarState extends State<MyCalendar> {
 
                    child: Text(Constants.monthNames[i],
                      textAlign: TextAlign.center,
-                     style: TextStyle(
+                     style: const TextStyle(
                          fontSize: 20,
                       // backgroundColor: Colors.lightBlueAccent
                      ),

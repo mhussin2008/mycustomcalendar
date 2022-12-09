@@ -1,3 +1,4 @@
+import 'package:collection/collection.dart';
 import 'package:flutter/material.dart';
 import 'package:mycustomcalendar/single_day.dart';
 
@@ -15,5 +16,17 @@ class Constants
   static List<SingleDay> header=List.filled(1, SingleDay(Constants.dayApprev[0], 0.toString(), 'H'),growable: true);
   static List<int> totalX=[0,0,0,0,0,0,0,0,0,0,0,0];
   static List<int>totalE=[0,0,0,0,0,0,0,0,0,0,0,0];
+
+  List<String> scheduleFromMem() {
+    return widgetList.map((e) => e.cstate).toList();
+  }
+
+  void scheduleToMem(List<String> newList){
+
+    for(int i=0;i<widgetList.length;i++){
+        widgetList[i]=  SingleDay(widgetList[i].num,widgetList[i].month,newList[i]);
+    }
+  }
+
 
 }

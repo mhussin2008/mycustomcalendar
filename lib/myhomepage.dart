@@ -3,6 +3,7 @@
 import 'package:flutter/material.dart';
 import 'package:mycustomcalendar/single_day.dart';
 import 'package:quiver/time.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'constants.dart';
 import 'mycalendar.dart';
 
@@ -18,7 +19,7 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-
+  final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
   void  Update (){
    setState(() {
@@ -57,9 +58,24 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(onPressed: () async {
+          List<String> savedgetlist;
+          savedgetlist = await _prefs.then((SharedPreferences prefs) {
+            return prefs.getStringList('data')?? ['0'];});
+          print(savedgetlist);
+
+          setState(() {
+            Constants().scheduleToMem(savedgetlist);
+          });
+        },
+          icon: const Icon(Icons.save),
+
+        ),
+      ),
       backgroundColor: Colors.white,
       
-      body: SafeArea(child: MyCalendar()),
+      body: const SafeArea(child: MyCalendar()),
     );
   }
 }
