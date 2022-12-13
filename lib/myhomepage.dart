@@ -60,22 +60,46 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(onPressed: () async {
+          // get data from  prefs to Screen
           List<String> savedgetlist;
           savedgetlist = await _prefs.then((SharedPreferences prefs) {
             return prefs.getStringList('data')?? ['0'];});
           print(savedgetlist);
 
           setState(() {
+
             Constants().scheduleToMem(savedgetlist);
           });
         },
-          icon: const Icon(Icons.save),
+          icon: const Icon(Icons.download),
 
         ),
+        actions: [
+
+          IconButton(onPressed: () async {
+            // get data from  prefs to Screen
+            List<String> getlist;
+
+            getlist =Constants().scheduleFromMem();
+
+            final SharedPreferences prefs = await _prefs;
+            prefs.setStringList('data', getlist);
+            print('saved to sharedprefs');
+            print(getlist);
+            setState(() {
+
+              //Constants().scheduleToMem(savedgetlist);
+            });
+          },
+            icon: const Icon(Icons.save),
+
+          ),
+
+        ],
       ),
       backgroundColor: Colors.white,
       
-      body: const SafeArea(child: MyCalendar()),
+      body: SafeArea(child: MyCalendar()),
     );
   }
 }
