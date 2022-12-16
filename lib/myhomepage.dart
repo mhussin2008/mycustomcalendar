@@ -21,11 +21,11 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
-  void  Update (){
-   setState(() {
-    build(context);
-   });
-  }
+  // void  Update (){
+  //  setState(() {
+  //   build(context);
+  //  });
+  // }
   @override
   void initState() {
     for(int h=1;h<Constants.dayApprev.length;h++){
