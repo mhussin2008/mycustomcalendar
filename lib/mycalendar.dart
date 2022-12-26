@@ -8,7 +8,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 
 class MyCalendar extends StatefulWidget {
-  const MyCalendar({Key? key}) : super(key: key);
+  const MyCalendar({super.key});
 
   @override
   State<MyCalendar> createState() => _MyCalendarState();

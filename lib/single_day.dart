@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
-import 'constants.dart';
+import '../constants.dart';
 
 class SingleDay extends StatefulWidget {
   SingleDay(this.num,this.month,this.cstate,{Key? key}) : super(key: key);
   final String num;
   final String month;
   String cstate;
+
+
 
 
   @override
@@ -27,6 +29,7 @@ class _SingleDayState extends State<SingleDay> {
             padding: EdgeInsets.all(0.0),
             alignment: Alignment.center,
             color: Constants.sColors[pos],
+
             onPressed: () {
             print(widget.num+'  '+widget.month+'  '+widget.cstate);
             if(widget.cstate=='X')
@@ -35,18 +38,20 @@ class _SingleDayState extends State<SingleDay> {
               setState(() {
                 widget.cstate='E';
               });
+              Constants.gk_Calendar.currentState?.setState(() {
 
-
+              });
               print('changedto E');
-            } else if(widget.cstate=='E')
+            }
+            else if(widget.cstate=='E')
             {
               //int getindex=Constants.widgetList.indexWhere((element) => (element.widget.num==widget.num && element.widget.month==widget.month));
               setState(() {
                 widget.cstate='X';
+              });
+              Constants.gk_Calendar.currentState?.setState(() {
 
               });
-
-
               print('changed to X');
             }
 
@@ -55,6 +60,7 @@ class _SingleDayState extends State<SingleDay> {
                 size:40,
                 Icons.circle_outlined),
           ),
+
         ),
         Text(widget.num
                 ,

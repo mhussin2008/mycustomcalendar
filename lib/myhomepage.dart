@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:mycustomcalendar/single_day.dart';
 import 'package:quiver/time.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import 'constants.dart';
-import 'mycalendar.dart';
+import '../constants.dart';
+import '../mycalendar.dart';
 
 
 class MyHomePage extends StatefulWidget {
@@ -99,7 +99,7 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       backgroundColor: Colors.white,
       
-      body: SafeArea(child: MyCalendar()),
+      body: SafeArea(child: MyCalendar(key: Constants.gk_Calendar)),
     );
   }
 }

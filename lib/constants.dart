@@ -17,6 +17,8 @@ class Constants
   static List<int> totalX=[0,0,0,0,0,0,0,0,0,0,0,0];
   static List<int>totalE=[0,0,0,0,0,0,0,0,0,0,0,0];
 
+  static GlobalKey<State<StatefulWidget>> gk_Calendar=GlobalKey();
+
   List<String> scheduleFromMem() {
     return widgetList.map((e) => e.cstate).toList();
   }
