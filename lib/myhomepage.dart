@@ -1,11 +1,9 @@
-//import 'dart:html';
-
 import 'package:flutter/material.dart';
 import 'package:mycustomcalendar/single_day.dart';
 import 'package:quiver/time.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-import '../constants.dart';
-import '../mycalendar.dart';
+import 'package:mycustomcalendar/constants.dart';
+import 'package:mycustomcalendar/mycalendar.dart';
 
 
 class MyHomePage extends StatefulWidget {
@@ -14,37 +12,26 @@ class MyHomePage extends StatefulWidget {
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
-
-
 }
 
 class _MyHomePageState extends State<MyHomePage> {
   final Future<SharedPreferences> _prefs = SharedPreferences.getInstance();
 
-  // void  Update (){
-  //  setState(() {
-  //   build(context);
-  //  });
-  // }
+
   @override
   void initState() {
     for(int h=1;h<Constants.dayApprev.length;h++){
       Constants.header.add(
          SingleDay(Constants.dayApprev[h], 0.toString(), 'H'));
     }
-    //Constants.header.removeAt(0);
-
-
 
     for(int m=1;m<=12;m++) {
       for (int i = 1; i <= daysInMonth(2022, m); i++)
         {Constants.widgetList.add(
             SingleDay(i.toString(), m.toString(), 'E'));}
     }
-    // Constants.widgetList.add(
-    //     SingleDay(31.toString(), 12.toString(), 12.isEven? 'X':'E'));
-    for(int i=1;i<=7;i++) {
-      Constants.widgetList.add(SingleDay('0', '0', 'Z'));
+     for(int i=1;i<=7;i++) {
+     Constants.widgetList.add(SingleDay('0', '0', 'Z'));
     }
     print('widget list length='+Constants.widgetList.length.toString());
 
@@ -79,9 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
           IconButton(onPressed: () async {
             // get data from  prefs to Screen
             List<String> getlist;
-
             getlist =Constants().scheduleFromMem();
-
             final SharedPreferences prefs = await _prefs;
             prefs.setStringList('data', getlist);
             print('saved to sharedprefs');
@@ -99,7 +84,8 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
       backgroundColor: Colors.white,
       
-      body: SafeArea(child: MyCalendar(key: Constants.gk_Calendar)),
+      body: SafeArea(
+          child: MyCalendar(key: Constants.gk_Calendar)),
     );
   }
 }

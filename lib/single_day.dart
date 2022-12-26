@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../constants.dart';
+import 'package:mycustomcalendar/constants.dart';
 
 class SingleDay extends StatefulWidget {
   SingleDay(this.num,this.month,this.cstate,{Key? key}) : super(key: key);
@@ -34,7 +34,7 @@ class _SingleDayState extends State<SingleDay> {
             print(widget.num+'  '+widget.month+'  '+widget.cstate);
             if(widget.cstate=='X')
             {
-              //int getindex=Constants.widgetList.indexWhere((element) => (element.widget.num==widget.num && element.widget.month==widget.month));
+
               setState(() {
                 widget.cstate='E';
               });
@@ -45,7 +45,7 @@ class _SingleDayState extends State<SingleDay> {
             }
             else if(widget.cstate=='E')
             {
-              //int getindex=Constants.widgetList.indexWhere((element) => (element.widget.num==widget.num && element.widget.month==widget.month));
+
               setState(() {
                 widget.cstate='X';
               });
