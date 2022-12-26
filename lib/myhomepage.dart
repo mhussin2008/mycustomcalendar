@@ -24,16 +24,17 @@ class _MyHomePageState extends State<MyHomePage> {
       Constants.header.add(
          SingleDay(Constants.dayApprev[h], 0.toString(), 'H'));
     }
-
+    Constants.widgetList.add(
+        SingleDay('0', '0', 'Z'));
     for(int m=1;m<=12;m++) {
-      for (int i = 1; i <= daysInMonth(2022, m); i++)
+      for (int i = 1; i <= daysInMonth(2023, m); i++)
         {Constants.widgetList.add(
             SingleDay(i.toString(), m.toString(), 'E'));}
     }
      for(int i=1;i<=7;i++) {
      Constants.widgetList.add(SingleDay('0', '0', 'Z'));
     }
-    print('widget list length='+Constants.widgetList.length.toString());
+    print('widget list length=' + Constants.widgetList.length.toString());
 
     Constants.widgetList.removeAt(0);
 
@@ -46,6 +47,7 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        title: Text('2023 KPC Calendar'),
         leading: IconButton(onPressed: () async {
           // get data from  prefs to Screen
           List<String> savedgetlist;
